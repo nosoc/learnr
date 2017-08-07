@@ -17,6 +17,7 @@
 #' @param ... One or more questions or answers 
 #' @param allow_retry Allow retry for incorrect answers.
 #' @param random_answer_order Display answers in a random order.
+#' @param sample_answers Integer giving the number of answers to show. All answers will be used if sample_answers is NULL.
 #' 
 #' @examples 
 #' \dontrun{
@@ -67,13 +68,25 @@ question <- function(text,
                      correct = "Correct!", 
                      incorrect = "Incorrect.",
                      allow_retry = FALSE,
-                     random_answer_order = FALSE) {
+                     random_answer_order = FALSE
+                     sample_answers = NULL) {
   
   # one time tutor initialization
   initialize_tutorial()
   
-  # capture/validate answers
+  # capture/sample/validate answers
   answers <- list(...)
+  if (!is.null(sample_answers)) {
+    if (is.integer(sample_answers)) {
+      if (length(answers) <= sample_answers) {
+        answers <- sample(answers, sample_answers)
+      } else {
+        stop("sample_answers is larger then number of question options provided")
+      }
+    } else {
+      stop("sample_answers is not integer")
+    }
+  }
   lapply(answers, function(answer) {
     if (!inherits(answer, "tutorial_quiz_answer"))
       stop("Object which is not an answer passed to question function")
