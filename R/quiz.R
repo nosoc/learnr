@@ -68,7 +68,7 @@ question <- function(text,
                      correct = "Correct!", 
                      incorrect = "Incorrect.",
                      allow_retry = FALSE,
-                     random_answer_order = FALSE
+                     random_answer_order = FALSE,
                      sample_answers = NULL) {
   
   # one time tutor initialization
