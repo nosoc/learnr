@@ -84,8 +84,11 @@ question <- function(text,
         if(any(sapply(answers_sampled, function(x){x$correct}))) {
           answers = answers_sampled
         } else {
-          answers_sampled[sample(1:length(answers_sampled), 1)] = answers[sapply(answers, function(x){x$correct})]
+          answers_correct = answers[sapply(answers, function(x){x$correct})]
+          answers_sampled[sample(1:length(answers_sampled), 1)] = sample(answers_correct, 1)
           answers = answers_sampled
+          rm(answers_correct)
+          rm(answers_sampled)
         }
       } else {
         stop("sample_answers is larger then number of question options provided")
