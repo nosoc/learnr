@@ -77,7 +77,7 @@ question <- function(text,
   # capture/sample/validate answers
   answers <- list(...)
   if (!is.null(sample_answers)) {
-    if (is.numeric(sample_answers)) {
+    if (!is.numeric(sample_answers)) {
       if (length(answers) >= sample_answers) {
         answers_sampled = sample(answers, sample_answers)
         # if no correct answer in answers_sampled, add it
@@ -90,7 +90,7 @@ question <- function(text,
         stop("sample_answers is larger then number of question options provided")
       }
     } else {
-      stop("sample_answers is not integer")
+      stop("sample_answers is not numeric")
     }
   }
   lapply(answers, function(answer) {
