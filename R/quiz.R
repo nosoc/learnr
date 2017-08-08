@@ -77,7 +77,7 @@ question <- function(text,
   # capture/sample/validate answers
   answers <- list(...)
   if (!is.null(sample_answers)) {
-    if (!is.numeric(sample_answers)) {
+    if (is.numeric(sample_answers)) {
       if (length(answers) >= sample_answers) {
         answers_sampled = sample(answers, sample_answers)
         # if no correct answer in answers_sampled, add it
