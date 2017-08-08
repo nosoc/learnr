@@ -10,7 +10,7 @@ quiz(..., caption = "Quiz")
 
 question(text, ..., type = c("auto", "single", "multiple"),
   correct = "Correct!", incorrect = "Incorrect.", allow_retry = FALSE,
-  random_answer_order = FALSE)
+  random_answer_order = FALSE, sample_answers = NULL)
 
 answer(text, correct = FALSE, message = NULL)
 }
