@@ -36,6 +36,8 @@ correct.}
 \item{allow_retry}{Allow retry for incorrect answers.}
 
 \item{random_answer_order}{Display answers in a random order.}
+  
+\item{sample_answers}{Integer giving the number of answers to show. All answers will be used if sample_answers is NULL.}
 
 \item{message}{Additional message to display along with correct/incorrect feedback.}
 }
