@@ -81,7 +81,7 @@ question <- function(text,
       if (length(answers) >= sample_answers) {
         answers_sampled = sample(answers, sample_answers)
         # if no correct answer in answers_sampled, add it
-        if(any(sapply(answers_sampled, function(x){x$correct})))
+        if(any(sapply(answers_sampled, function(x){x$correct}))) {
           answers = answers_sampled
         } else {
           answers_sampled[sample(1:length(answers_sampled), 1)] = answers[sapply(answers, function(x){x$correct})]
